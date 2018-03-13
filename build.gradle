@@ -1,0 +1,34 @@
+version "0.1"
+group "neo.script.grails"
+
+subprojects {
+    buildscript {
+        repositories {
+            maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+            jcenter()
+            maven { url "https://repo.grails.org/grails/core" }
+        }
+        dependencies {
+            classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+            classpath "gradle.plugin.com.energizedwork.webdriver-binaries:webdriver-binaries-gradle-plugin:1.1"
+            classpath "gradle.plugin.com.energizedwork:idea-gradle-plugins:1.4"
+            classpath "org.grails.plugins:hibernate5:${gormVersion - ".RELEASE"}"
+            classpath "org.grails.plugins:views-gradle:1.1.6"
+        }
+    }
+
+    apply plugin:'groovy'
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        jcenter()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+
+    configurations.all {
+        exclude group: 'org.codehaus.groovy', module: 'groovy'
+    }
+    dependencies {
+        compile 'org.codehaus.groovy:groovy-all:2.4.13'
+        compile 'com.google.guava:guava:24.0-jre'
+    }
+}
