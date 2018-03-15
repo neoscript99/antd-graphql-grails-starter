@@ -1,2 +1,2 @@
 # PropertySource Loaders
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=neo.script.gorm.GormGeneralRepositoryAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=neo.script.gorm.general.GormGeneralRepositoryAutoConfiguration

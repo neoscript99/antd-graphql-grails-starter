@@ -1,10 +1,10 @@
-package neo.script.gorm.repositories
+package neo.script.gorm.general.repositories
 
 import grails.gorm.DetachedCriteria
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import groovy.util.logging.Slf4j
-import neo.script.gorm.util.JsonUtil
+import neo.script.util.JsonUtil
 import org.grails.datastore.gorm.GormEntity
 import org.grails.datastore.mapping.model.PersistentEntity
 import org.hibernate.SessionFactory

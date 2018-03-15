@@ -1,4 +1,4 @@
-package neo.script.gorm.util;
+package neo.script.util;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,4 +1,4 @@
-package neo.script.gorm.repositories
+package neo.script.gorm.general.repositories
 
 /**
  * 数据库操作通用接口

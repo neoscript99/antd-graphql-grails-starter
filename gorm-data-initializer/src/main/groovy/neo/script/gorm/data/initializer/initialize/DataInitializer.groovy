@@ -1,11 +1,11 @@
 package neo.script.gorm.data.initializer.initialize
 
-import neo.script.gorm.repositories.GeneralRepository
+import neo.script.gorm.general.repositories.GeneralRepository
 import org.springframework.context.ApplicationContext;
 
 /**
  * DataInitializer方式数据初始化接口类
- * <p>必须显示实现这个接口，并通过包扫描执行
+ * <p>必须直接实现这个接口，并通过包扫描执行
  * <p>通过org.springframework.core.annotation.Order实现顺序执行
  * Created by Neo on 2017-08-22.
  */

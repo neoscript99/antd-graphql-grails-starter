@@ -1,4 +1,4 @@
-package neo.script.gorm
+package neo.script.gorm.general
 
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration

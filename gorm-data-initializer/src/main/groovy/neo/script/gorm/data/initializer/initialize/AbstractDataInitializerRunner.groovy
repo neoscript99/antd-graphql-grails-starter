@@ -1,7 +1,8 @@
 package neo.script.gorm.data.initializer.initialize
 
+import grails.gorm.transactions.Transactional
 import groovy.util.logging.Slf4j
-import neo.script.gorm.repositories.GeneralRepository
+import neo.script.gorm.general.repositories.GeneralRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.CommandLineRunner
@@ -13,7 +14,6 @@ import org.springframework.core.io.support.ResourcePatternResolver
 import org.springframework.core.type.ClassMetadata
 import org.springframework.core.type.classreading.CachingMetadataReaderFactory
 import org.springframework.core.type.classreading.MetadataReaderFactory
-import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.ClassUtils
 import org.springframework.util.SystemPropertyUtils
 
@@ -34,7 +34,11 @@ abstract class AbstractDataInitializerRunner implements CommandLineRunner {
     @Autowired
     ApplicationArguments applicationArguments
 
-    abstract String getBasePackage()
+    String getBasePackage() {
+        def pkg = this.class.getPackage()
+        log.debug("DataInitializer BasePackage: {}", pkg)
+        return pkg.name
+    }
 
     @Override
     @Transactional
@@ -67,7 +71,7 @@ abstract class AbstractDataInitializerRunner implements CommandLineRunner {
             for (Resource resource : resources) {
                 ClassMetadata metadata = metadataReaderFactory.getMetadataReader(resource).getClassMetadata()
                 if (metadata && metadata.isConcrete()
-                        && DataInitializer.isAssignableFrom(metadata.getClass())) {
+                        && metadata.getInterfaceNames().contains(DataInitializer.name)) {
                     String cls = metadata.getClassName()
                     initClasses << Class.forName(cls)
                 }

@@ -16,4 +16,8 @@ include 'services:webservice'
 */
 
 rootProject.name = 'antd-graphql-grails-starter'
-include 'grails-graphql-starter','gorm-data-initializer','gorm-general-repository'
+include 'grails-graphql-starter',
+        'gorm-data-initializer',
+        'gorm-general-repository',
+        'gorm-general-domain-plugin',
+        'neo-script-util'

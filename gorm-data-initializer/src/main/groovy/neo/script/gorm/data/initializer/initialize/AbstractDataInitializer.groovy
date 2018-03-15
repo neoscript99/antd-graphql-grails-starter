@@ -1,7 +1,7 @@
 package neo.script.gorm.data.initializer.initialize
 
 import groovy.util.logging.Slf4j
-import neo.script.gorm.repositories.GeneralRepository
+import neo.script.gorm.general.repositories.GeneralRepository
 import org.springframework.context.ApplicationContext
 
 /**
