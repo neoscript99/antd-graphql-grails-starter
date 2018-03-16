@@ -1,19 +1,19 @@
 package neo.script.grails.graphql.demo
 
-import grails.rest.Resource
+import neo.script.gorm.data.initializer.initialize.InitializeDomian
 import org.grails.gorm.graphql.entity.dsl.GraphQLMapping
 
 import java.time.LocalDate
 
-@Resource(uri='/speaker')
+@InitializeDomian
 class Speaker {
-
+    String id
     String firstName
     String lastName
-    String name
+    LocalDate birthday
     String email
     String bio
-    LocalDate birthday
+    String name
 
     static hasMany = [talks: Talk]
 
@@ -44,7 +44,7 @@ class Speaker {
 
     static constraints = {
         email nullable: true, email: true
-        bio nullable: true
+        bio nullable: true, maxSize: 128
     }
 
     static mapping = {
@@ -53,4 +53,8 @@ class Speaker {
         talks sort: 'id'
     }
 
+    static Speaker JEFF = new Speaker(firstName: 'Jeff', lastName: 'Brown', birthday: LocalDate.of(1975, 11, 15), email: 'brownj@objectcomputing.com', bio: 'Jeff Brown is an author and tech lead at OCI')
+    static Speaker GRAEME = new Speaker(firstName: 'Graeme', lastName: 'Rocher', birthday: LocalDate.of(1978, 1, 1), email: 'rocherg@objectcomputing.com', bio: 'Graeme Rocher is the tech lead for the Grails project')
+    static Speaker ZAK = new Speaker(firstName: 'Zachary', lastName: 'Klein', birthday: LocalDate.of(1989, 2, 23), email: 'kleinz@objectcomputing.com')
+    static initList = [JEFF, GRAEME, ZAK]
 }

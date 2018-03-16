@@ -2,7 +2,7 @@ version "0.1"
 group "neo.script.grails"
 
 subprojects {
-    apply plugin:'groovy'
+    apply plugin: 'groovy'
     repositories {
         maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
         jcenter()
@@ -10,6 +10,11 @@ subprojects {
     }
 
     configurations.all {
+        ["ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh",
+         "jmx", "json", "jsr223", "nio", "servlet", "sql",
+         "swing", "test", "templates", "testng", "xml"].each {
+            exclude group: 'org.codehaus.groovy', module: "groovy-$it"
+        }
         exclude group: 'org.codehaus.groovy', module: 'groovy'
     }
     dependencies {
